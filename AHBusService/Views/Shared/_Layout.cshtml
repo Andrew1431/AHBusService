@@ -32,7 +32,9 @@
     <div class="container body-content">
         @if (TempData["message"] != null)
         {
-            <p class="text-danger">@TempData["message"]</p>
+            <div class="well" style="margin-top: 15px">
+                <h4 class="text-danger"><strong>@TempData["message"]</strong></h4>
+            </div>
         }
         @RenderBody()
         <hr />

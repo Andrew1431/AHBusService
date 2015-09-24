@@ -4,14 +4,14 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Details for @ViewData["busRouteCode"] - @ViewData["busRouteName"]</h2>
 
 <div>
-    <h4>routeStop</h4>
+    <h4>Route Stop</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.offsetMinutes)
+            Offset Minutes
         </dt>
 
         <dd>
@@ -19,15 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.busRoute.routeName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.busRoute.routeName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.busStop.location)
+            Bus Stop Location
         </dt>
 
         <dd>

@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<AHBusService.Models.routeStop>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Routes for " + @ViewData["busRouteName"];
 }
 
-<h2>Index</h2>
+<h2>Stops for @ViewData["busRouteCode"] - @ViewData["busRouteName"]</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,13 +12,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.offsetMinutes)
+            Offset Minutes
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.busRoute.routeName)
+            Bus Route Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.busStop.location)
+            Bus Stop Location
+        </th>
+        <th>
+            Bus Stop Number
         </th>
         <th></th>
     </tr>
@@ -33,6 +36,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.busStop.location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.busStop.busStopNumber)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.routeStopId }) |
