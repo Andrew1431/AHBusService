@@ -1,0 +1,60 @@
+﻿@model IEnumerable<AHBusService.Models.busStop>
+
+@{
+    ViewBag.Title = "Bus Stops";
+}
+
+<h2>
+    Bus Stops
+
+    <a class="btn btn-primary btn-sm pull-right" href="/AHBusStops/Create">
+        Create
+    </a>
+</h2>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Location
+            </th>
+            <th>
+                Location Hash
+            </th>
+            <th>
+                Going Downtown
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.busStopNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.locationHash)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.goingDowntown)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.busStopNumber }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.busStopNumber }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.busStopNumber })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

@@ -1,0 +1,50 @@
+﻿@model AHBusService.Models.busStop
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>busStop</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.busStopNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.busStopNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.locationHash)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.locationHash)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.goingDowntown)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.goingDowntown)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a class="btn btn-primary" href="/AHBusStops/Edit/@Model.busStopNumber">Edit</a>
+    <a class="btn btn-default" href="/AHBusStops/Index">Back</a>
+</p>

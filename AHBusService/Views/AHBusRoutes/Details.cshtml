@@ -1,0 +1,26 @@
+﻿@model AHBusService.Models.busRoute
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bus Route #@Html.DisplayFor(model => model.busRouteCode)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Route Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.routeName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a class="btn btn-primary" href="/AHBusRoutes/Edit/@Model.busRouteCode">Edit</a>
+    <a class="btn btn-default" href="/AHBusRoutes/Index">Back to List</a>
+</p>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<AHBusService.Models.busRoute>
+
+@{
+    ViewBag.Title = "Bus Routes";
+}
+
+<h2>
+    Bus Routes
+
+    <a class="btn btn-primary btn-sm pull-right" href="/AHBusRoutes/Create">
+        Create
+    </a>
+</h2>
+<table class="table table-striped table-bordered">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Route Name
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.busRouteCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.routeName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.busRouteCode }) |
+                @Html.ActionLink("Details", "Details", new { id = item.busRouteCode }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.busRouteCode })
+            </td>
+        </tr>
+    }
+
+</table>
