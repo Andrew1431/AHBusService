@@ -30,6 +30,10 @@
         </div>
     </div>
     <div class="container body-content">
+        @if (TempData["message"] != null)
+        {
+            <p class="text-danger">@TempData["message"]</p>
+        }
         @RenderBody()
         <hr />
         <footer>
