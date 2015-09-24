@@ -28,7 +28,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.busRouteCode)
+                @Html.ActionLink(item.busRouteCode, "Index", "AHRouteStops", new { routeCode = item.busRouteCode}, null)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.routeName)
