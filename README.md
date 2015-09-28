@@ -12,4 +12,4 @@ ASP.NET MVC Assignments.
 1. The red lines are code that were deleted.
 2. The green lines are code that were added.
 
-Or just browse the main repo files to see the completed stuff.
+Or just browse the main repo files to see the completed stuff..
