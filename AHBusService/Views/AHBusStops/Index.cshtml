@@ -15,16 +15,19 @@
     <thead>
         <tr>
             <th>
-                ID
+                @Html.ActionLink("ID", "Index", new { orderBy = "busStopNumber" })
             </th>
             <th>
-                Location
+                @Html.ActionLink("Location", "Index", new { orderBy = "location" })
             </th>
             <th>
                 Location Hash
             </th>
             <th>
                 Going Downtown
+            </th>
+            <th>
+                Bus Schedule
             </th>
             <th>
                 Actions
@@ -47,6 +50,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.goingDowntown)
+                </td>
+                <td>
+                    @Html.ActionLink("View", "RouteSelector", new { busStopNumber = item.busStopNumber }, new { @class = "btn btn-sm btn-default btn-block" })
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.busStopNumber }) |

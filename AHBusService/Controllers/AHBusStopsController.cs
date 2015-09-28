@@ -32,8 +32,20 @@ namespace AHBusService.Content
 
         // GET: AHBusStops
         // Returns the index view with a list of bus stops.
-        public ActionResult Index()
+        public ActionResult Index(String orderBy)
         {
+            if (orderBy != null)
+            {
+                if (orderBy.Equals("busStopNumber"))
+                {
+                    return View(db.busStops.OrderBy(p => p.busStopNumber).ToList());
+                }
+                if (orderBy.Equals("location"))
+                {
+                    return View(db.busStops.OrderBy(p => p.location).ToList());
+                }
+            }
+
             return View(db.busStops.ToList());
         }
 
