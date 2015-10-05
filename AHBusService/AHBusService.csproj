@@ -341,6 +341,7 @@
     <Content Include="Views\AHTripStops\Edit.cshtml" />
     <Content Include="Views\AHTripStops\Index.cshtml" />
     <Content Include="Views\AHBusStops\RouteSelector.cshtml" />
+    <Content Include="Views\AHRouteSchedules\RouteStopSchedule.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

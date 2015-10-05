@@ -61,26 +61,31 @@ namespace AHBusService.Content
                 }
                 else
                 {
-                    Session["busStopId"] = busStopNumber;
+                    // Save bus stop number to session
+                    Session["busStopNumber"] = busStopNumber;
                 }
 
+                // Retrieve a list of route stops with the bus stop number.
                 List<routeStop> routeStops = db.routeStops.Where(r => r.busStopNumber == busStopNumber).ToList();
 
+                // If empty, return to index with an error message containing specific details.
                 if (routeStops.Count == 0)
                 {
                     busStop b = db.busStops.Find(busStopNumber);
                     throw new Exception(String.Format("There are no route stops for {0} - #{1}", b.location, b.busStopNumber));
                 }
 
+                // If 1, go to the route stop schedule for that stop.
                 if (routeStops.Count == 1)
                 {
                     return RedirectToAction("RouteStopSchedule", "AHRouteSchedules", new { routeStopId = routeStops[0].routeStopId });
                 }
 
+                // If many, allow user to choose the bus route. Save the routeStopId to a session variable.
                 if (routeStops.Count > 1)
                 {
                     List<busRoute> busRoutes = new List<busRoute>();
-                    routeStops.ForEach(p => busRoutes.Add(p.busRoute));
+                    routeStops.ForEach(routeStop => busRoutes.Add(routeStop.busRoute));
                     ViewBag.busRoutes = new SelectList(busRoutes, "busRouteCode", "routeName");
                     return View(routeStops);
                 }

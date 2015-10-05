@@ -1,0 +1,42 @@
+﻿@model IEnumerable<AHBusService.Models.routeSchedule>
+
+@{
+    ViewBag.Title = "Route Stop Schedule";
+}
+
+<h2>Route Stop Schedule for @ViewBag.busStopLocation - #@ViewBag.busStopNumber</h2>
+
+<div class="col-md-6">
+    <h2>Week Days</h2>
+    <ul class="list-group">
+        @if (Model.Where(rs => rs.isWeekDay).ToList().Count > 0)
+        {
+            foreach (var item in Model.Where(rs => rs.isWeekDay))
+            {
+                <li class="list-group-item">@(item.startTime.Add(ViewBag.offsetMinutes).ToString(@"h\:mm"))</li>
+            }
+        }
+        else
+        {
+            <li class="list-group-item">No schedules run during week.</li>
+        }
+    </ul>
+</div>
+
+<div class="col-md-6">
+    <h2>Weekends</h2>
+    <ul class="list-group">
+        @if (Model.Where(rs => !rs.isWeekDay).ToList().Count > 0)
+        {
+            foreach (var item in Model.Where(rs => !rs.isWeekDay))
+            {
+                <li class="list-group-item">@(item.startTime.Add(ViewBag.offsetMinutes).ToString(@"h\:mm"))</li>
+            }
+        }
+        else
+        {
+            <li class="list-group-item">No schedules run during weekend.</li>
+        }
+    </ul>
+</div>
+
