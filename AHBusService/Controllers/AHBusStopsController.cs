@@ -79,8 +79,9 @@ namespace AHBusService.Content
 
                 if (routeStops.Count > 1)
                 {
-                    routeStops = routeStops.GroupBy(r => r.busRoute).SelectMany(r => r).ToList();
-                    ViewBag.routeStops = new SelectList(routeStops, "busRouteCode", "routeName");
+                    List<busRoute> busRoutes = new List<busRoute>();
+                    routeStops.ForEach(p => busRoutes.Add(p.busRoute));
+                    ViewBag.busRoutes = new SelectList(busRoutes, "busRouteCode", "routeName");
                     return View(routeStops);
                 }
             }
