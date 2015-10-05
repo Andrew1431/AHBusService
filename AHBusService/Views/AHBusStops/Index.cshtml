@@ -27,9 +27,6 @@
                 Going Downtown
             </th>
             <th>
-                Bus Schedule
-            </th>
-            <th>
                 Actions
             </th>
         </tr>
@@ -43,16 +40,13 @@
                     @Html.DisplayFor(modelItem => item.busStopNumber)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.location)
+                    @Html.ActionLink(item.location, "RouteSelector", new { busStopNumber = item.busStopNumber })
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.locationHash)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.goingDowntown)
-                </td>
-                <td>
-                    @Html.ActionLink("View", "RouteSelector", new { busStopNumber = item.busStopNumber }, new { @class = "btn btn-sm btn-default btn-block" })
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.busStopNumber }) |

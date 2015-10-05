@@ -49,6 +49,49 @@ namespace AHBusService.Content
             return View(db.busStops.ToList());
         }
 
+        // GET: AHBusStops/RouteSelector/5
+        // Returns a view to allow users to select the route they want to see schedules for. 
+        public ActionResult RouteSelector(int? busStopNumber)
+        {
+            try
+            {
+                if (busStopNumber == null)
+                {
+                    throw new Exception("Please select a bus stop.");
+                }
+                else
+                {
+                    Session["busStopId"] = busStopNumber;
+                }
+
+                List<routeStop> routeStops = db.routeStops.Where(r => r.busStopNumber == busStopNumber).ToList();
+
+                if (routeStops.Count == 0)
+                {
+                    busStop b = db.busStops.Find(busStopNumber);
+                    throw new Exception(String.Format("There are no route stops for {0} - #{1}", b.location, b.busStopNumber));
+                }
+
+                if (routeStops.Count == 1)
+                {
+                    return RedirectToAction("RouteStopSchedule", "AHRouteSchedules", new { routeStopId = routeStops[0].routeStopId });
+                }
+
+                if (routeStops.Count > 1)
+                {
+                    routeStops = routeStops.GroupBy(r => r.busRoute).SelectMany(r => r).ToList();
+                    ViewBag.routeStops = new SelectList(routeStops, "busRouteCode", "routeName");
+                    return View(routeStops);
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["message"] = ex.Message;
+            }
+
+            return RedirectToAction("Index");
+        }
+
         // GET: AHBusStops/Details/5
         // Returns detailed information about a specific bus stop, no ID will return a bad request http status code (400 if not specified, 404 if not found)
         public ActionResult Details(int? id)
